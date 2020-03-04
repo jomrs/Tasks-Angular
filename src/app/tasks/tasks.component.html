@@ -1,0 +1,9 @@
+<div class="addTask">
+    <input type="text" id="inputBox" #tsk placeholder="Adicione a task aqui...">
+    <button class="btnAdd" (click)="addTask(tsk.value); tsk.value=''">Adicionar</button>
+</div>
+<div class="tasks *ngIf='task_formated; else message">
+    <ul>
+        <li *ngFor="let task of task_formated">{{task}} <button (click)="remove(task)" class="close">X</button></li>
+    </ul>
+</div>
