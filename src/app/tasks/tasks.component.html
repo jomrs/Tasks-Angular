@@ -2,8 +2,21 @@
     <input type="text" id="inputBox" #tsk placeholder="Adicione a task aqui...">
     <button class="btnAdd" (click)="addTask(tsk.value); tsk.value=''">Adicionar</button>
 </div>
-<div class="tasks *ngIf='task_formated; else message">
-    <ul>
-        <li *ngFor="let task of task_formated">{{task}} <button (click)="remove(task)" class="close">X</button></li>
-    </ul>
+<div class="tasks *ngIf='task_formated">
+    <table class="table">
+        <tbody>
+                <!-- here comes the tasks -->
+                <tr *ngFor="let task of task_formated">
+                    <th>{{task.date}}</th>
+                    <td *ngIf="!task.status">{{task.title}}</td>
+                    <td *ngIf="task.status"><strike>{{task.title}}</strike></td>
+                    <td *ngIf="!task.status"class="to-right">
+                        <button (click)="finish(task.id)" class="concluir">Concluir</button>
+                        <button (click)="remove(task.id)" class="close">X</button>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+
 </div>

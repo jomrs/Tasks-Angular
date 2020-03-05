@@ -39,16 +39,19 @@ export class TasksComponent implements OnInit {
     if(formated != "False") {
       //convert json to string
       let task = JSON.stringify(this.convert(formated));
-      this.store(task);
-      this.task_formated.push(this.showTask(task));
+      this.store(formated)
       console.log("Task Adicionada.")
     }
      
   }
 
   //salva no localStorage sobre key random.
-  store(task: string) {
+  store(task): void {
     let random_key = String(Math.floor(Math.random()*1204));
+    task = this.convert(task);
+    task.id = random_key;
+    this.task_formated.push(task);
+    task = JSON.stringify(task);
     window.localStorage.setItem(random_key, task);
   }
 
@@ -63,15 +66,36 @@ export class TasksComponent implements OnInit {
   }
 
   //remove from localStorage if maches title
-  remove(title:string): void {
-    title = title.split("| ")[1];
-    let keys = this.getKeys();
-    for(let x=0; x<keys.length; x++) {
-      let ctask = JSON.parse(window.localStorage.getItem(String(keys[x])));
-      if(ctask['title']==title) {
-        window.localStorage.removeItem(String(keys[x]));
+  remove(id:string): void {
+    let temp;
+    for(let x=0; x<this.task_formated.length; x++) {
+      temp = this.task_formated[x];
+      if(temp.id == id) {
+        this.task_formated.splice(x, 1);
+        window.localStorage.removeItem(id);
+        console.log(`task de id: ${temp.id} removida.`);
+        break;
       }
     }
+  }
+
+  finish(id: string): void {
+    let temp;
+    let on_local = window.localStorage.getItem(id);
+    for(let x=0; x<this.task_formated.length; x++) {
+      temp = this.task_formated[x];
+      if(temp.id == id) {
+        this.task_formated[x].status = true;
+        on_local = this.changeStatus(on_local);
+      }
+    }
+  }
+
+  changeStatus(task: string): string {
+    task = JSON.parse(task);
+    task.status = true;
+    window.localStorage.setItem(task.id, JSON.stringify(task));
+    return JSON.stringify(task);
   }
 
   //pega as tasks do localStorage.
@@ -90,14 +114,10 @@ export class TasksComponent implements OnInit {
     const current_tasks = this.tasks();
     for(let x=0; x<current_tasks.length;x++) {
       let converted = JSON.parse(String(current_tasks[x]));
-      tasks.push(`${converted['date']} | ${converted['title']}`);
+      tasks.push(converted);
     }
     return tasks;
   }
 
-  showTask(task: string): string {
-    let converted = JSON.parse(task);
-    return `${converted['date']} | ${converted['title']}`;
-  }
 
 }
