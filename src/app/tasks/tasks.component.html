@@ -11,8 +11,8 @@
                     <td *ngIf="!task.status">{{task.title}}</td>
                     <td *ngIf="task.status"><strike>{{task.title}}</strike></td>
                     <td *ngIf="!task.status"class="to-right">
-                        <button (click)="finish(task.id)" class="concluir">Concluir</button>
-                        <button (click)="remove(task.id)" class="close">X</button>
+                        <button (click)="finish(task.id)" class="finish">Concluir</button>
+                        <button (click)="remove(task.id)" class="remove">X</button>
                     </td>
                 </tr>
 
