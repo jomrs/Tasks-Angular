@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Preview
 
-![Image previw]("https://raw.githubusercontent.com/jonhtan/Tasks-Angular/master/pic.png")
+![Image preview](https://raw.githubusercontent.com/jonhtan/Tasks-Angular/master/pic.png)
 
 ## Development server
 
