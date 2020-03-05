@@ -3,8 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
 
 # Preview
-
-![Image preview](https://raw.githubusercontent.com/jonhtan/Tasks-Angular/master/pic.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jonhtan/Tasks-Angular/master/pic.png" alt="Project Preview" />
+</p>
 
 ## Development server
 
