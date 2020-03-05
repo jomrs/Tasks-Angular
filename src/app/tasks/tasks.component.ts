@@ -56,7 +56,7 @@ export class TasksComponent implements OnInit {
   }
 
   //pega as chaves armazenadas no localStorage.
-  getKeys(): Array<String> {
+  getKeys(): Array<string> {
     let keys = [];
     let entries = Object.entries(localStorage);
     for (let key in entries) {
@@ -91,7 +91,7 @@ export class TasksComponent implements OnInit {
     }
   }
 
-  changeStatus(task: string): string {
+  changeStatus(task): string {
     task = JSON.parse(task);
     task.status = true;
     window.localStorage.setItem(task.id, JSON.stringify(task));
@@ -99,7 +99,7 @@ export class TasksComponent implements OnInit {
   }
 
   //pega as tasks do localStorage.
-  tasks(): Array<String> {
+  tasks(): Array<string> { 
     let tasks = [];
     let keys = this.getKeys();
     for(let key=0;key<keys.length;key++) {
@@ -109,7 +109,7 @@ export class TasksComponent implements OnInit {
   }
 
   //deixa tudo mais clean.
-  formatedTask(): Array<String> {
+  formatedTask() { 
     let tasks = [];
     const current_tasks = this.tasks();
     for(let x=0; x<current_tasks.length;x++) {

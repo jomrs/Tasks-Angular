@@ -9,7 +9,7 @@
                 <tr *ngFor="let task of task_formated">
                     <th>{{task.date}}</th>
                     <td *ngIf="!task.status">{{task.title}}</td>
-                    <td *ngIf="task.status"><strike>{{task.title}}</strike></td>
+                    <td *ngIf="task.status"><s>{{task.title}}</s></td>
                     <td *ngIf="!task.status"class="to-right">
                         <button (click)="finish(task.id)" class="finish">Concluir</button>
                         <button (click)="remove(task.id)" class="remove">X</button>
