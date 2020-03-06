@@ -1,5 +1,5 @@
 <div class="addTask">
-    <input type="text" id="inputBox" #tsk placeholder="Adicione a task aqui...">
+    <input type="text" (keydown.enter)="addTask(tsk.value); tsk.value=''" id="inputBox" #tsk placeholder="Adicione a task aqui...">
     <button class="btnAdd" (click)="addTask(tsk.value); tsk.value=''">Adicionar</button>
 </div>
 <div class="tasks *ngIf='task_formated">
